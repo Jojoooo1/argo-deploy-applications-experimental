@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: clickhouse
+  namespace: argocd
+
+  # Add this finalizer ONLY if you want these to cascade delete (A cascade delete, deletes both the app and its resources, rather than only the app.)
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+
+  source: 
+    chart: clickhouse
+    repoURL: registry-1.docker.io/bitnamicharts
+    targetRevision: 3.8.0
+    
+    # https://github.com/bitnami/charts/tree/main/bitnami/clickhouse
+    helm:
+      valuesObject:
+        shards: 2 # 2
+        replicaCount: 3 # 3
+        keeper:
+          enabled: true
+        zookeeper:
+          enabled: false
+        resources:
+          # requests:
+          #   memory: "2.5Gi"
+          #   cpu: "1"
+          # limits:
+          #   memory: "2.5Gi"
+          #   cpu: "1"
+        auth:
+          username: admin
+          password: password
+        ingress:
+          enabled: true
+          ingressClassName: nginx
+          hostname: clickhouse.local.com.br
+        persistence:
+          # storageClass: auto-resize
+          size: 8Gi
+        # metrics:
+        #   enabled: true
+        #   serviceMonitor
+        #     enabled: true
+        #     labels:
+        #       prometheus.io/scrap-with: kube-prometheus-stack
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: clickhouse
