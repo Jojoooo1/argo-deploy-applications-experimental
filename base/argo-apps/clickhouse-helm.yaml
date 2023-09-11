@@ -18,7 +18,7 @@ spec:
   source: 
     chart: clickhouse
     repoURL: registry-1.docker.io/bitnamicharts
-    targetRevision: 3.8.0
+    targetRevision: 3.8.3
     
     # https://github.com/bitnami/charts/tree/main/bitnami/clickhouse
     helm:
