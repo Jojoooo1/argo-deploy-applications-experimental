@@ -44,8 +44,8 @@ spec:
           # https://github.com/bitnami/charts/issues/17497#issuecomment-1625089275
           # SCRAM support in KRaft mode has been recently added in the latest version 3.5 and we are currently working on adding support for it.
           sasl:
-            interBrokerMechanism: PLAIN # SCRAM-SHA-256
-            controllerMechanism: PLAIN # SCRAM-SHA-256
+            interBrokerMechanism: SCRAM-SHA-256 # SCRAM-SHA-256
+            controllerMechanism: SCRAM-SHA-256 # SCRAM-SHA-256
             interbroker:
               user: inter_broker_user
               # password: ""
