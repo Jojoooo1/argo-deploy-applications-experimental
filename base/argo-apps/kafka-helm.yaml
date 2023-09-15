@@ -107,7 +107,7 @@ spec:
           metrics:
             kafka:
               enabled: true
-              certificatesSecret: kfka-tls
+              certificatesSecret: kafka-tls-secret
               tlsCaCert: kafka-ca.crt
               tlsCert: kafka.crt
               tlsKey: kafka.key
