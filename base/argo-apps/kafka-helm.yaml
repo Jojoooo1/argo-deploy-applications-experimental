@@ -17,7 +17,7 @@ spec:
 
   sources:
     - chart: kafka
-      repoURL: registry-1.docker.io/bitnamicharts
+      repoURL: https://charts.bitnami.com/bitnami
       targetRevision: 25.1.10
 
       # https://docs.confluent.io/platform/current/kafka/deployment.html
