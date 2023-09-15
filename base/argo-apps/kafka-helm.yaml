@@ -48,10 +48,10 @@ spec:
             controllerMechanism: SCRAM-SHA-256 # SCRAM-SHA-256
             interbroker:
               user: inter_broker_user
-              password: "password"
+              # password: ""
             controller:
               user: controller_user
-              password: "password"
+              # password: ""
             client:
               users:
                 - admin
@@ -79,8 +79,8 @@ spec:
               data:
                 client-passwords: cGFzc3dvcmQscGFzc3dvcmQscGFzc3dvcmQscGFzc3dvcmQ=
                 system-user-password: cGFzc3dvcmQ=
-                # inter-broker-password: GFzc3dvcmQ=
-                # controller-password: cGFzc3dvcmQ=
+                inter-broker-password: ZDk1dTVOcGtCeA==
+                controller-password: WUgxTEJkakRmeA==
               type: Opaque
 
             - apiVersion: v1
