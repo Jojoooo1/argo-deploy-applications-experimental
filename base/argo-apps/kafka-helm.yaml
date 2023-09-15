@@ -79,8 +79,8 @@ spec:
               data:
                 client-passwords: cGFzc3dvcmQscGFzc3dvcmQscGFzc3dvcmQscGFzc3dvcmQ=
                 system-user-password: cGFzc3dvcmQ=
-                inter-broker-password: GFzc3dvcmQ=
-                controller-password: cGFzc3dvcmQ=
+                # inter-broker-password: GFzc3dvcmQ=
+                # controller-password: cGFzc3dvcmQ=
               type: Opaque
 
             - apiVersion: v1
