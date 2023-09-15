@@ -36,10 +36,10 @@ spec:
               protocol: SASL_SSL
             controller:
               containerPort: 9093
-              protocol: SASL_PLAINTEXT
+              protocol: SASL_SSL
             interbroker:
               containerPort: 9094
-              protocol: SASL_PLAINTEXT
+              protocol: SASL_SSL
           
           # https://github.com/bitnami/charts/issues/17497#issuecomment-1625089275
           # SCRAM support in KRaft mode has been recently added in the latest version 3.5 and we are currently working on adding support for it.
