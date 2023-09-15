@@ -77,10 +77,10 @@ spec:
                 # system-user-password  is used for kafka exporter
                 # client-passwords is used for sasl
               data:
-                client-passwords: cGFzc3dvcmQscGFzc3dvcmQscGFzc3dvcmQscGFzc3dvcmQ=
+                client-passwords: cGFzc3dvcmQscGFzc3dvcmQ=
                 system-user-password: cGFzc3dvcmQ=
-                inter-broker-password: ZDk1dTVOcGtCeA==
-                controller-password: WUgxTEJkakRmeA==
+                inter-broker-password: cGFzc3dvcmQ=
+                controller-password: cGFzc3dvcmQ=
               type: Opaque
 
             - apiVersion: v1
