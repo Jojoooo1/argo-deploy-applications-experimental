@@ -1,0 +1,73 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: observability-promtail
+  namespace: argocd
+
+  # Add this finalizer ONLY if you want these to cascade delete (A cascade delete, deletes both the app and its resources, rather than only the app.)
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
+
+spec:
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+
+  source:
+    chart: promtail
+    repoURL: "https://grafana.github.io/helm-charts"
+    targetRevision: 6.15.1
+    helm:
+      # https://github.com/grafana/helm-charts/blob/main/charts/promtail/values.yaml
+      parameters:
+        - name: fullnameOverride
+          value: "promtail"
+
+        - name: resources.requests.memory
+          value: "128Mi"
+        - name: resources.limits.memory
+          value: "128Mi"
+        - name: resources.requests.cpu
+          value: "200m"
+        - name: resources.limits.cpu
+          value: "200m"
+
+        - name: config.clients[0].url
+          value: "http://loki-headless:3100/loki/api/v1/push"
+
+        - name: serviceMonitor.enabled
+          value: "true"
+        - name: serviceMonitor.labels.prometheus\.io/scrap-with
+          value: "kube-prometheus-stack"
+
+      # values: |-
+      #   serviceAccount:
+      #     annotations:
+      #       iam.gke.io/gcp-service-account: loki-logs@${ARGOCD_ENV_PROJECT}.iam.gserviceaccount.com
+      #   config:
+      #     snippets:
+      #       extraScrapeConfigs:
+      #         # Note: added to only scrap pod with annotation loki.io/scrape: 'true'
+      #         - source_labels: [__meta_kubernetes_pod_annotation_loki_io_scrape]
+      #           action: keep
+      #           regex: true
+      #         - job_name: GCP cloud functions
+      #           gcplog:
+      #             project_id: ${ARGOCD_ENV_PROJECT}
+      #             subscription: functions-cloud-logs-sub
+      #             use_incoming_timestamp: false
+      #             labels:
+      #               job: "gcp/functions"
+      #               component: "function"
+                    
+      #           relabel_configs:
+      #             - source_labels: ['__gcp_resource_labels_project_id']
+      #               target_label: 'project'
+      #             - source_labels: ['__gcp_resource_labels_function_name']
+      #               target_label: 'app'
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: observability

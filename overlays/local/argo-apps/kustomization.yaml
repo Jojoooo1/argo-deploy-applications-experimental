@@ -8,5 +8,7 @@ resources:
   - ../../../base/argo-apps/ingress-apisix-helm.yaml
   - ../../../base/argo-apps/kafka-helm.yaml
   - ../../../base/argo-apps/linkerd-helm.yaml
+  - ../../../base/argo-apps/loki-promtail-helm.yaml
+  - ../../../base/argo-apps/loki-helm.yaml
   - ../../../base/argo-apps/redpanda-helm.yaml
 
