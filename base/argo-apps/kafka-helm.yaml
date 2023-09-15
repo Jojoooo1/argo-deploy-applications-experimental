@@ -33,7 +33,7 @@ spec:
               protocol: SASL_SSL
             external:
               containerPort: 9095
-              protocol: SASL_SSL
+              protocol: SASL_PLAINTEXT
             controller:
               containerPort: 9093
               protocol: SASL_PLAINTEXT
@@ -74,8 +74,8 @@ spec:
               metadata:
                 name: kfk-passwords
                 namespace: kafka
-                # system-user-password  is used for kafka exporter
                 # client-passwords is used for sasl
+                # system-user-password  is used for kafka exporter
               data:
                 client-passwords: cGFzc3dvcmQscGFzc3dvcmQ=
                 system-user-password: cGFzc3dvcmQ=
