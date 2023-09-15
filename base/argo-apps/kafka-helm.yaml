@@ -30,7 +30,7 @@ spec:
           listeners:
             client:
               containerPort: 9092
-              protocol: PLAINTEXT
+              protocol: SASL_PLAINTEXT
             external:
               containerPort: 9095
               protocol: SASL_PLAINTEXT
