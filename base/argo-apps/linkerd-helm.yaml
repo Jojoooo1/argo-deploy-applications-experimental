@@ -23,7 +23,7 @@ spec:
       
     - chart: linkerd-viz
       repoURL: https://helm.linkerd.io/stable
-      targetRevision: 30.11.0
+      targetRevision: 30.12.4
       # https://github.com/linkerd/linkerd2/tree/main/viz/charts/linkerd-viz
       helm:
         valuesObject:
@@ -33,7 +33,7 @@ spec:
 
     - chart: linkerd-control-plane
       repoURL: https://helm.linkerd.io/stable
-      targetRevision: 1.15.0
+      targetRevision: 1.16.4
       # https://github.com/linkerd/linkerd2/tree/main/charts/linkerd-control-plane
       helm:
         valuesObject:

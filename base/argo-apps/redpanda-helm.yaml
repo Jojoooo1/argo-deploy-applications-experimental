@@ -16,7 +16,7 @@ spec:
   sources:
     - chart: redpanda
       repoURL: https://charts.redpanda.com
-      targetRevision: 5.6.15
+      targetRevision: 5.6.39
       
       # https://github.com/redpanda-data/helm-charts/tree/main/charts/redpanda
       helm:
@@ -39,7 +39,7 @@ spec:
 
     - chart: console
       repoURL: https://charts.redpanda.com
-      targetRevision: 0.7.5
+      targetRevision: 0.7.6
 
       # https://github.com/redpanda-data/helm-charts/tree/main/charts/console
       helm:
